@@ -1,13 +1,14 @@
 ﻿//Right click project and add class... Warrior.cs
 using WarriorWars.Enum;
 using WarriorWars.Tools;
+using System;
 
 namespace WarriorWars
 {
     class Warrior
     {
-        private const int GOOD_GUY_STARTING_HEALTH = 100;  //starting healths are going to be constants. Const get all caps with underscores
-        private const int BAD_GUY_STARTING_HEALTH = 100;   //Don't want to leave the starting health of the warriors up to someone else
+        private const int GOOD_GUY_STARTING_HEALTH = 35;  //starting healths are going to be constants. Const get all caps with underscores
+        private const int BAD_GUY_STARTING_HEALTH = 35;   //Don't want to leave the starting health of the warriors up to someone else
 
         //What defines a warrior
         private int health;
@@ -61,14 +62,17 @@ namespace WarriorWars
             
             //once we have damage calculated, we need to inflict it on the enemy
             enemy.health -= damage;
-            if (enemy.health < 0)
+
+            if (enemy.health > 0)
             {
-                enemy.isAlive = false;
-                System.Console.WriteLine($"{enemy.name} is dead! {name} is victorious!");
+                Console.WriteLine($"{name} attacked {enemy.name}. Damage of {damage} was inflicted on {enemy.name}, remaining health of {enemy.name} is {enemy.health}.");
             }
             else
             {
-                System.Console.WriteLine($"{name} attacked {enemy.name}. {damage} was inflicted, remaining health is {enemy.health}.");
+                enemy.isAlive = false;
+                Console.WriteLine($"{name} attacked {enemy.name}.");
+                Decor.ColorfulWriteLine($"{enemy.name} is dead!", ConsoleColor.Red);
+                Decor.ColorfulWriteLine($"{name} is victorious with a remaining health of {health}!", ConsoleColor.Green);
             }
         }
     }

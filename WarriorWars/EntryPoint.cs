@@ -23,6 +23,7 @@ namespace WarriorWars
                 {
                     badGuy.Attack(goodGuy);
                 }
+                Thread.Sleep(200);  //Adds a pause of 200ms between attacks
             }
 
         }
