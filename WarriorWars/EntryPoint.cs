@@ -8,8 +8,13 @@ namespace WarriorWars
         
         static void Main()
         {
-            Warrior goodGuy = new Warrior("Megan", Faction.GoodGuy);
-            Warrior badGuy = new Warrior("Marco", Faction.BadGuy);
+            Console.Write("Good guy name: ");
+            string gg = Console.ReadLine();
+            Console.Write("Bad guy name: ");
+            string bg = Console.ReadLine();
+            
+            Warrior goodGuy = new Warrior(gg, Faction.GoodGuy);
+            Warrior badGuy = new Warrior(bg, Faction.BadGuy);
             //Need to give warriors the ability to attach by creating new method in Warrior class
             
             //Create game loop
